@@ -1,0 +1,40 @@
+body {
+  background-image: url("http://www.999images.com/wallpapers/nike-sporty-1280x800.jpg")
+}
+
+#title {
+  text-align: center;
+  font-size: 100px;
+  color: white;
+  font-family: Georgia;
+
+}
+
+.info {
+  color: blue;
+  text-align: center;
+  font-size: 30px
+}
+.teaminfo {
+  color: pink;
+  text-align: center;
+}
+
+a{
+  color:red;
+}
+
+.small{
+  color: green;
+  text-align: center;
+}
+img {
+  height: 100px;
+  width: 100px;
+  
+}
+
+#pictures {
+  text-align: center;
+}
+
