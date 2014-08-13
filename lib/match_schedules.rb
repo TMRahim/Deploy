@@ -104,9 +104,16 @@ class Matchdata
     giants = NFLTeam.new('http://espn.go.com/nfl/team/_/name/nyg/new-york-giants')
     yankees = MlbTeam.new('http://espn.go.com/mlb/team/_/name/nyy/new-york-yankees')
     test_weather = Weather.new("http://www.weather.com/weather/tenday/New+York+NY+USNY0996")
-    "#{barcelona.next_game} \n #{giants.nfl_next_game } \n #{yankees.next_game}.\n Today weather is #{test_weather.weather_info}F. The chance of raining is #{test_weather.rain_change}."
+    "#{barcelona.next_game} \n #{giants.nfl_next_game } \n #{yankees.next_game}."
   end
+
+  def get_weather
+    test_weather = Weather.new("http://www.weather.com/weather/tenday/New+York+NY+USNY0996")
+    "Today weather is #{test_weather.weather_info}F. The chance of raining is #{test_weather.rain_change}."
+  end
+
 end
+
 
 
 

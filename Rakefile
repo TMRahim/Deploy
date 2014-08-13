@@ -10,3 +10,9 @@ task :send_matches do
   email.send_email(matches.get_all_matches)
 end
 
+task :send_weather do
+  weather = Matchdata.new
+  email = Email.new
+  email.send_email(weather.get_weather)
+end
+
