@@ -3,7 +3,20 @@ require 'open-uri'
 require 'pry'
 
 
+class Weather
 
+   def initialize(weather_site)
+     site_html = open(weather_site)
+     @weather_team = Nokogiri::HTML(site_html)
+  end
+  def weather_info
+    @weather_team.css("p.wx-temp").children.first.text
+  end
+  def rain_change 
+    @weather_team.css("div.wx-details").first.children.children.children[1].text    
+  end
+end
+  
 class MlbTeam
 
   def initialize(team_website)
@@ -90,18 +103,10 @@ class Matchdata
     barcelona = SoccerTeam.new("http://www1.skysports.com/football/teams/barcelona/fixtures-results")
     giants = NFLTeam.new('http://espn.go.com/nfl/team/_/name/nyg/new-york-giants')
     yankees = MlbTeam.new('http://espn.go.com/mlb/team/_/name/nyy/new-york-yankees')
-    "#{barcelona.next_game} \n #{giants.nfl_next_game } \n #{yankees.next_game} "
+    test_weather = Weather.new("http://www.weather.com/weather/tenday/New+York+NY+USNY0996")
+    "#{barcelona.next_game} \n #{giants.nfl_next_game } \n #{yankees.next_game}.\n Today weather is #{test_weather.weather_info}F. The chance of raining is #{test_weather.rain_change}."
   end
 end
 
 
 
-
-# barcelona = open('http://www1.skysports.com/football/teams/barcelona/fixtures-results')
-# barcelona_doc = Nokogiri::HTML(barcelona)
-# date = barcelona_doc.css('div.team-hdr-item.team-hdr-next h4 span.team-hdr-time').text
-# time = barcelona_doc.css('div.team-hdr-item.team-hdr-next table tbody tr td.center a').text
-# against = barcelona_doc.css('div.team-hdr-item.team-hdr-next table tbody tr td.txtright').text
-# puts "The next game for Barcelona is on " + time + ", " + date + " against " + against + "." 
-# time = 
-# opponent =
